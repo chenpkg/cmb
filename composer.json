@@ -1,6 +1,6 @@
 {
     "name": "chenpkg/cmb",
-    "description": "cmb package.",
+    "description": "招商银行聚合支付 SDK",
     "license": "MIT",
     "authors": [
         {
