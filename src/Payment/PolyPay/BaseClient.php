@@ -26,23 +26,6 @@ class BaseClient
     protected $app;
 
     /**
-     * @var Repository
-     * @example
-     * [
-     *     'appid' => '',
-     *     'secret' => '',
-     *     'mer_id' => '',
-     *     'user_id' => '',
-     *     'public_key' => '',
-     *     'private_key' => '',
-     *     'cmb_public_key' => '',
-     *
-     *     'test' => false
-     * ]
-     */
-    //protected $config;
-
-    /**
      * @var string
      */
     protected $baseUri = 'https://api.cmbchina.com/polypay/v1.0';
