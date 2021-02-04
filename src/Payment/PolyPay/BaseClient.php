@@ -12,6 +12,7 @@ use Chenpkg\Support\Repository;
 use Cmb\Kernel\Exceptions\InvalidSignException;
 use Cmb\Kernel\Utils;
 use Cmb\Kernel\Traits\HasHttpRequests;
+use function Chenpkg\Support\tap;
 
 class BaseClient
 {

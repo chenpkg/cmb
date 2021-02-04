@@ -11,6 +11,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\HandlerStack;
 use Psr\Http\Message\ResponseInterface;
+use function Chenpkg\Support\tap;
 
 trait HasHttpRequests
 {
@@ -106,6 +107,7 @@ trait HasHttpRequests
     public function withHeaders(array $headers)
     {
         // 简化 return $this
+
         return tap($this, function ($request) use ($headers) {
             $this->requestOptions = array_merge_recursive($this->requestOptions, [
                 'headers' => $headers

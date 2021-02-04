@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": "^7.3",
-        "chenpkg/support": "0.*",
+        "chenpkg/support": "^1.0",
         "guzzlehttp/guzzle": "^6.2 || ^7.0",
         "symfony/http-foundation": "^5.1",
         "pimple/pimple": "^3.3",
