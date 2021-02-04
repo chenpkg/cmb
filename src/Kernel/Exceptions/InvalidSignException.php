@@ -5,7 +5,7 @@
  * Date 2021/1/27 14:18
  */
 
-namespace Chenpkg\Cmb\Kernel\Exceptions;
+namespace Cmb\Kernel\Exceptions;
 
 use Exception;
 

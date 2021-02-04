@@ -5,9 +5,9 @@
  * Date 2021/2/4 11:49
  */
 
-namespace Chenpkg\Cmb\Payment\Notify;
+namespace Cmb\Payment\Notify;
 
-use Chenpkg\Cmb\Payment\Handler;
+use Cmb\Payment\Handler;
 use Closure;
 
 class Paid extends Handler
@@ -15,7 +15,7 @@ class Paid extends Handler
     /**
      * @param Closure $closure
      * @return mixed|\Symfony\Component\HttpFoundation\JsonResponse
-     * @throws \Chenpkg\Cmb\Kernel\Exceptions\InvalidSignException
+     * @throws \Cmb\Kernel\Exceptions\InvalidSignException
      */
     public function handle(Closure $closure)
     {

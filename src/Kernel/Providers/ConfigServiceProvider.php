@@ -5,7 +5,7 @@
  * Date 2021/2/4 10:47
  */
 
-namespace Chenpkg\Cmb\Kernel\Providers;
+namespace Cmb\Kernel\Providers;
 
 use Chenpkg\Support\Repository;
 use Pimple\Container;

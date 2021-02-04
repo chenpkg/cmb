@@ -5,13 +5,13 @@
  * Date 2021/1/27 13:30
  */
 
-namespace Chenpkg\Cmb\Payment\PolyPay;
+namespace Cmb\Payment\PolyPay;
 
-use Chenpkg\Cmb\Payment\Application;
+use Cmb\Payment\Application;
 use Chenpkg\Support\Repository;
-use Chenpkg\Cmb\Kernel\Exceptions\InvalidSignException;
-use Chenpkg\Cmb\Kernel\Utils;
-use Chenpkg\Cmb\Kernel\Traits\HasHttpRequests;
+use Cmb\Kernel\Exceptions\InvalidSignException;
+use Cmb\Kernel\Utils;
+use Cmb\Kernel\Traits\HasHttpRequests;
 
 class BaseClient
 {
@@ -93,9 +93,9 @@ class BaseClient
      * @param string $method
      * @param array  $options
      * @param bool   $returnRaw
-     * @return array|\Chenpkg\Cmb\Kernel\Http\Response|\Chenpkg\Support\Collection|object|string|\Psr\Http\Message\ResponseInterface
+     * @return array|\Cmb\Kernel\Http\Response|\Chenpkg\Support\Collection|object|string|\Psr\Http\Message\ResponseInterface
      *
-     * @throws \Chenpkg\Cmb\Kernel\Exceptions\InvalidConfigException
+     * @throws \Cmb\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function request($url, array $params = [], $method = 'post', array $options = [], $returnRaw = false)
@@ -138,7 +138,7 @@ class BaseClient
      * @param string $method
      * @param array  $options
      * @return mixed
-     * @throws \Chenpkg\Cmb\Kernel\Exceptions\InvalidConfigException
+     * @throws \Cmb\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     protected function requestVerify($url, array $params = [], $method = 'post', array $options = [])

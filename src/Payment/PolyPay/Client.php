@@ -5,14 +5,14 @@
  * Date 2021/1/27 14:40
  */
 
-namespace Chenpkg\Cmb\Payment\PolyPay;
+namespace Cmb\Payment\PolyPay;
 
 class Client extends BaseClient
 {
     /**
      * @param array $params
      * @return mixed
-     * @throws \Chenpkg\Cmb\Kernel\Exceptions\InvalidConfigException
+     * @throws \Cmb\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function qrCode(array $params)
@@ -23,7 +23,7 @@ class Client extends BaseClient
     /**
      * @param $orderId
      * @return mixed
-     * @throws \Chenpkg\Cmb\Kernel\Exceptions\InvalidConfigException
+     * @throws \Cmb\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function orderQuery($orderId)
@@ -36,7 +36,7 @@ class Client extends BaseClient
     /**
      * @param array $params
      * @return mixed
-     * @throws \Chenpkg\Cmb\Kernel\Exceptions\InvalidConfigException
+     * @throws \Cmb\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function refund(array $params)
@@ -47,7 +47,7 @@ class Client extends BaseClient
     /**
      * @param $orderId
      * @return mixed
-     * @throws \Chenpkg\Cmb\Kernel\Exceptions\InvalidConfigException
+     * @throws \Cmb\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function refundQuery($orderId)
@@ -59,8 +59,8 @@ class Client extends BaseClient
 
     /**
      * @param $orderId
-     * @return array|\Chenpkg\Cmb\Kernel\Http\Response|\Chenpkg\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
-     * @throws \Chenpkg\Cmb\Kernel\Exceptions\InvalidConfigException
+     * @return array|\Cmb\Kernel\Http\Response|\Chenpkg\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @throws \Cmb\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function close($orderId)
@@ -73,7 +73,7 @@ class Client extends BaseClient
     /**
      * @param array $params
      * @return mixed
-     * @throws \Chenpkg\Cmb\Kernel\Exceptions\InvalidConfigException
+     * @throws \Cmb\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function orderQrCode(array $params)

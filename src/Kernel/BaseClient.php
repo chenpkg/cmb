@@ -5,9 +5,9 @@
  * Date 2021/2/4 11:27
  */
 
-namespace Chenpkg\Cmb\Kernel;
+namespace Cmb\Kernel;
 
-use Chenpkg\Cmb\Kernel\Traits\HasHttpRequests;
+use Cmb\Kernel\Traits\HasHttpRequests;
 
 class BaseClient
 {

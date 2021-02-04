@@ -5,12 +5,12 @@
  * Date 2021/1/27 16:08
  */
 
-namespace Chenpkg\Cmb\Payment;
+namespace Cmb\Payment;
 
 use Closure;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Chenpkg\Cmb\Kernel\Utils;
-use Chenpkg\Cmb\Kernel\Exceptions\InvalidSignException;
+use Cmb\Kernel\Utils;
+use Cmb\Kernel\Exceptions\InvalidSignException;
 
 abstract class Handler
 {

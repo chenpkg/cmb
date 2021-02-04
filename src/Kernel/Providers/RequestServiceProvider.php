@@ -5,7 +5,7 @@
  * Date 2021/2/4 11:15
  */
 
-namespace Chenpkg\Cmb\Kernel\Providers;
+namespace Cmb\Kernel\Providers;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;

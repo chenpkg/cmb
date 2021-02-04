@@ -5,7 +5,7 @@
  * Date 2021/2/4 11:37
  */
 
-namespace Chenpkg\Cmb\Payment\PolyPay;
+namespace Cmb\Payment\PolyPay;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;

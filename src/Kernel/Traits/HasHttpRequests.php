@@ -5,7 +5,7 @@
  * Date 2021/1/27 11:04
  */
 
-namespace Chenpkg\Cmb\Kernel\Traits;
+namespace Cmb\Kernel\Traits;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;

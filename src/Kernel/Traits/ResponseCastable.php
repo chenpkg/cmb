@@ -5,11 +5,11 @@
  * Date 2021/1/27 14:04
  */
 
-namespace Chenpkg\Cmb\Kernel\Traits;
+namespace Cmb\Kernel\Traits;
 
-use Chenpkg\Cmb\Kernel\Http\Response;
+use Cmb\Kernel\Http\Response;
 use Chenpkg\Support\Contracts\Arrayable;
-use Chenpkg\Cmb\Kernel\Exceptions\InvalidConfigException;
+use Cmb\Kernel\Exceptions\InvalidConfigException;
 use Psr\Http\Message\ResponseInterface;
 
 trait ResponseCastable

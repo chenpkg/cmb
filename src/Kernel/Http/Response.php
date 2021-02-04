@@ -5,7 +5,7 @@
  * Date 2021/1/27 13:58
  */
 
-namespace Chenpkg\Cmb\Kernel\Http;
+namespace Cmb\Kernel\Http;
 
 use Chenpkg\Support\Collection;
 use GuzzleHttp\Psr7\Response as GuzzleResponse;

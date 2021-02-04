@@ -5,10 +5,10 @@
  * Date 2021/2/4 10:43
  */
 
-namespace Chenpkg\Cmb\Kernel;
+namespace Cmb\Kernel;
 
 use Pimple\Container;
-use Chenpkg\Cmb\Kernel\Providers\ConfigServiceProvider;
+use Cmb\Kernel\Providers\ConfigServiceProvider;
 
 class ServiceContainer extends Container
 {

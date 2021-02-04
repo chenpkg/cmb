@@ -5,14 +5,14 @@
  * Date 2021/2/4 10:41
  */
 
-namespace Chenpkg\Cmb;
+namespace Cmb;
 
 use Chenpkg\Support\Str;
 
 /**
  * Class Factory
  *
- * @method static \Chenpkg\Cmb\Payment\Application payment(array $config = [])
+ * @method static \Cmb\Payment\Application payment(array $config = [])
  */
 class Factory
 {
@@ -24,7 +24,7 @@ class Factory
     public static function make($name, array $config)
     {
         $namespace = Str::studly($name);
-        $application = "\\Chenpkg\\Cmb\\{$namespace}\\Application";
+        $application = "\\Cmb\\{$namespace}\\Application";
 
         return new $application($config);
     }

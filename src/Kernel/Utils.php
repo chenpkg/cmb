@@ -5,7 +5,7 @@
  * Date 2021/1/27 14:23
  */
 
-namespace Chenpkg\Cmb\Kernel;
+namespace Cmb\Kernel;
 
 use Chenpkg\Support\Arr;
 use Chenpkg\Support\RSA;
