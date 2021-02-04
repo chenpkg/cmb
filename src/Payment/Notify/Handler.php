@@ -118,7 +118,7 @@ abstract class Handler
             $this->verify($message);
         }
 
-        $this->message = $message;
+        return $this->message = $message;
     }
 
     /**
