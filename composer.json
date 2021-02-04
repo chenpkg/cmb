@@ -1,0 +1,30 @@
+{
+    "name": "chenpkg/cmb",
+    "description": "cmb package.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "cestbon",
+            "email": "734245503@qq.com"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "chenpkg/support": "dev-master",
+        "guzzlehttp/guzzle": "^6.2 || ^7.0",
+        "symfony/http-foundation": "^5.1",
+        "pimple/pimple": "^3.3",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Chenpkg\\Cmb\\": "src"
+        }
+    },
+    "repositories": {
+        "support": {
+            "type": "path",
+            "url": "../support"
+        }
+    }
+}
