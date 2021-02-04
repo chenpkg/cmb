@@ -40,7 +40,7 @@ class BaseClient
      *     'test' => false
      * ]
      */
-    protected $config;
+    //protected $config;
 
     /**
      * @var string
@@ -55,9 +55,30 @@ class BaseClient
     {
         $this->app = $app;
 
-        $this->config = $this->app['config'];
-
         $this->resolveBaseUri();
+    }
+
+    /**
+     * @param array $config
+     * @return $this
+     * @example
+     *     [
+     *     'appid' => '',
+     *     'secret' => '',
+     *     'mer_id' => '',
+     *     'user_id' => '',
+     *     'public_key' => '',
+     *     'private_key' => '',
+     *     'cmb_public_key' => '',
+     *
+     *     'test' => false
+     * ]
+     */
+    public function setConfig(array $config)
+    {
+        $this->app['config']->set($config);
+
+        return $this;
     }
 
     /**
@@ -65,7 +86,7 @@ class BaseClient
      */
     public function resolveBaseUri()
     {
-        if ($this->config['test']) {
+        if ($this->app['config']['test']) {
             $this->baseUri = 'https://api.cmburl.cn:8065/polypay/v1.0';
         }
     }
@@ -110,8 +131,8 @@ class BaseClient
 
         // 业务字段
         $bizContent = [
-            'merId' => $this->config['mer_id'],
-            'userId' => $this->config['user_id']
+            'merId' => $this->app['config']['mer_id'],
+            'userId' => $this->app['config']['user_id']
         ];
 
         $base = array_filter(array_merge($base, $this->prepends()), 'strlen');
@@ -120,7 +141,7 @@ class BaseClient
 
         $base['biz_content'] = json_encode($params);
 
-        $base['sign'] = Utils::sign($base, $this->config['private_key']);
+        $base['sign'] = Utils::sign($base, $this->app['config']['private_key']);
 
         $this->headerMiddleware($base['sign']);
 
@@ -130,7 +151,7 @@ class BaseClient
 
         $response = $this->performRequest($url, $method, $options);
 
-        return $returnRaw ? $response : $this->castResponseToType($response, $this->config['response_type']);
+        return $returnRaw ? $response : $this->castResponseToType($response, $this->app['config']['response_type']);
     }
 
     /**
@@ -155,7 +176,7 @@ class BaseClient
      */
     protected function syncVerify(array $params)
     {
-        if (! Utils::verifyPolyPay($params, $this->config['cmb_public_key'])) {
+        if (! Utils::verifyPolyPay($params, $this->app['config']['cmb_public_key'])) {
             throw new InvalidSignException('Invalid sign.');
         }
     }
@@ -169,8 +190,8 @@ class BaseClient
     {
         $this->requestOptions['headers'] = [];
 
-        $appid = $this->config['appid'];
-        $secret = $this->config['secret'];
+        $appid = $this->app['config']['appid'];
+        $secret = $this->app['config']['secret'];
         $timestamp = time();
 
         $data = [
