@@ -7,7 +7,6 @@
 
 namespace Cmb\Payment\Notify;
 
-use Cmb\Payment\Handler;
 use Closure;
 
 class Paid extends Handler

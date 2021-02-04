@@ -5,7 +5,7 @@
  * Date 2021/1/27 16:08
  */
 
-namespace Cmb\Payment;
+namespace Cmb\Payment\Notify;
 
 use Closure;
 use Symfony\Component\HttpFoundation\JsonResponse;
