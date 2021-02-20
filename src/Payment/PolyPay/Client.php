@@ -80,4 +80,37 @@ class Client extends BaseClient
     {
         return $this->requestVerify('mchorders/orderqrcodeapply', $params);
     }
+
+    /**
+     * @param array $params
+     * @return mixed
+     * @throws \Cmb\Kernel\Exceptions\InvalidConfigException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function onlinePay(array $params)
+    {
+        return $this->requestVerify('mchorders/onlinepay', $params);
+    }
+
+    /**
+     * @param array $params
+     * @return mixed
+     * @throws \Cmb\Kernel\Exceptions\InvalidConfigException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function aliServerPay(array $params)
+    {
+        return $this->requestVerify('mchorders/servpay', $params);
+    }
+
+    /**
+     * @param array $params
+     * @return mixed
+     * @throws \Cmb\Kernel\Exceptions\InvalidConfigException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function aliQrCode(array $params)
+    {
+        return $this->requestVerify('mchorders/zfbqrcode', $params);
+    }
 }
