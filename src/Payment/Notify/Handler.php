@@ -109,7 +109,7 @@ abstract class Handler
      */
     public function getMessage()
     {
-        if (! $this->message) {
+        if ($this->message) {
             return $this->message;
         }
 
