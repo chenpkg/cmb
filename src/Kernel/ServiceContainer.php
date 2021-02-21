@@ -7,6 +7,7 @@
 
 namespace Cmb\Kernel;
 
+use Cmb\Kernel\Providers\RequestServiceProvider;
 use Pimple\Container;
 use Cmb\Kernel\Providers\ConfigServiceProvider;
 
@@ -51,6 +52,7 @@ class ServiceContainer extends Container
     {
         return array_merge([
             ConfigServiceProvider::class,
+            RequestServiceProvider::class
         ], $this->providers);
     }
 
