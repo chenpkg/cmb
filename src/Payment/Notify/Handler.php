@@ -113,7 +113,7 @@ abstract class Handler
             return $this->message;
         }
 
-        $message = $this->app['request']->getContent();
+        $message = $this->app['request']->request->all();
 
         if ($this->check) {
             $this->verify($message);
