@@ -27,7 +27,11 @@ trait SetConfig
      */
     public function setConfig(array $config)
     {
-        $this->app['config']->set($config);
+        if (property_exists($this, 'app')) {
+            $this->app['config']->set($config);
+        } else {
+            $this['config']->set($config);
+        }
 
         return $this;
     }
