@@ -11,6 +11,7 @@ use Closure;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Cmb\Kernel\Utils;
 use Cmb\Kernel\Exceptions\InvalidSignException;
+use Cmb\Payment\Application;
 
 abstract class Handler
 {
