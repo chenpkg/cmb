@@ -9,6 +9,7 @@ namespace Cmb\Payment;
 
 use Closure;
 use Cmb\Kernel\ServiceContainer;
+use Cmb\Kernel\Traits\SetConfig;
 
 /**
  * Class Application
@@ -17,6 +18,8 @@ use Cmb\Kernel\ServiceContainer;
  */
 class Application extends ServiceContainer
 {
+    use SetConfig;
+
     protected $providers = [
         PolyPay\ServiceProvider::class
     ];

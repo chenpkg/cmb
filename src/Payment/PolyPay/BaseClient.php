@@ -7,8 +7,8 @@
 
 namespace Cmb\Payment\PolyPay;
 
+use Cmb\Kernel\Traits\SetConfig;
 use Cmb\Payment\Application;
-use Chenpkg\Support\Repository;
 use Cmb\Kernel\Exceptions\InvalidSignException;
 use Cmb\Kernel\Utils;
 use Cmb\Kernel\Traits\HasHttpRequests;
@@ -16,9 +16,8 @@ use function Chenpkg\Support\tap;
 
 class BaseClient
 {
-    use HasHttpRequests {
-        request as performRequest;
-    }
+    use HasHttpRequests { request as performRequest; }
+    use SetConfig;
 
     /**
      * @var Application
@@ -39,29 +38,6 @@ class BaseClient
         $this->app = $app;
 
         $this->resolveBaseUri();
-    }
-
-    /**
-     * @param array $config
-     * @return $this
-     * @example
-     *     [
-     *     'appid' => '',
-     *     'secret' => '',
-     *     'mer_id' => '',
-     *     'user_id' => '',
-     *     'public_key' => '',
-     *     'private_key' => '',
-     *     'cmb_public_key' => '',
-     *
-     *     'test' => false
-     * ]
-     */
-    public function setConfig(array $config)
-    {
-        $this->app['config']->set($config);
-
-        return $this;
     }
 
     /**
