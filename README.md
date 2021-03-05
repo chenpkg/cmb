@@ -19,17 +19,18 @@ use Cmb\Factory;
 $config = [
     'appid'  => 'appid',
     'secret' => 'secret',
-
+    // 商户 ID
     'mer_id' => 'mer_id',
+    // 收银员 ID
     'user_id' => 'user_id',
-
+    // 商户公钥
     'public_key' => '...',
-
+    // 商户私钥
     'private_key' => '...',
-
+    // 招行公钥
     'cmb_public_key' => '...',
 
-    // 测试环境
+    // 是否开启测试环境
     'test' => true
 ];
 
