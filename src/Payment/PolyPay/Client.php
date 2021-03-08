@@ -113,4 +113,15 @@ class Client extends BaseClient
     {
         return $this->requestVerify('mchorders/zfbqrcode', $params);
     }
+
+    /**
+     * @param array $params
+     * @return mixed
+     * @throws \Cmb\Kernel\Exceptions\InvalidConfigException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function miniAppOrder(array $params)
+    {
+        return $this->requestVerify('mchorders/MiniAppOrderApply', $params);
+    }
 }
