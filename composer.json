@@ -14,7 +14,8 @@
         "guzzlehttp/guzzle": "^6.2 || ^7.0",
         "symfony/http-foundation": "^5.1",
         "pimple/pimple": "^3.3",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-openssl": "*"
     },
     "autoload": {
         "psr-4": {

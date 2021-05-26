@@ -64,15 +64,23 @@ $app->polypay->close($orderId);
 $app->polypay->orderQrCode($params);
 ```
 
-## Contributing
+## 消息通知
 
-You can contribute in one of three ways:
+```php
+$response = $app->handlePaidNotify(function ($message, $fail) {
+    // data
+    var_dump($message);
+    
+    // 你的逻辑
+    
+    return true;
+    
+    // 或者错误消息
+    return $fail('Order not exists.');
+});
 
-1. File bug reports using the [issue tracker](https://github.com/chenpkg/cmb/issues).
-2. Answer questions or fix bugs on the [issue tracker](https://github.com/chenpkg/cmb/issues).
-3. Contribute new features or update the wiki.
-
-_The code contribution process is not very formal. You just need to make sure that you follow the PSR-0, PSR-1, and PSR-2 coding guidelines. Any new code contributions must be accompanied by unit tests where applicable._
+$response->send(); // Laravel 里请使用：return $response;
+```
 
 ## License
 
