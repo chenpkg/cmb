@@ -7,6 +7,7 @@
 
 namespace Cmb\Payment\PolyPay;
 
+use Chenpkg\Support\Traits\Macroable;
 use Cmb\Kernel\Traits\SetConfig;
 use Cmb\Payment\Application;
 use Cmb\Kernel\Exceptions\InvalidSignException;
@@ -17,7 +18,8 @@ use function Chenpkg\Support\tap;
 class BaseClient
 {
     use HasHttpRequests { request as performRequest; }
-    use SetConfig;
+
+    use  SetConfig, Macroable;
 
     /**
      * @var Application
