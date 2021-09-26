@@ -2,6 +2,10 @@
 
 <p align="center"> 招商银行聚合支付 SDK </p>
 
+## Requirement
+
+1. PHP >= 7.2 | PHP >= 8.0
+
 ## Installing
 
 ```shell
