@@ -7,7 +7,6 @@
 
 namespace Cmb\Kernel\Exceptions;
 
-class RuntimeException
+class RuntimeException extends Exception
 {
-
 }

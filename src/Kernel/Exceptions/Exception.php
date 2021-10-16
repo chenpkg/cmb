@@ -7,7 +7,6 @@
 
 namespace Cmb\Kernel\Exceptions;
 
-class Exception
+class Exception extends \Exception
 {
-
 }

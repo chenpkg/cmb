@@ -98,7 +98,12 @@ abstract class Handler
 
         ksort($base);
 
-        $base['sign'] = Utils::sign($base, $this->app['config']['private_key']);
+        $base['sign'] = Utils::sign(
+            $base,
+            $this->app['config']->get('private_key'),
+            $this->app['config']->get('sign_method', '01'),
+            $this->app['config']->get('bin_path')
+        );
 
         return new JsonResponse($base);
     }
@@ -128,7 +133,12 @@ abstract class Handler
      */
     public function verify(array $message)
     {
-        if (! Utils::verifyPolyPay($message, $this->app['config']['cmb_public_key'])) {
+        if (! Utils::verifyPolyPay(
+            $message,
+            $this->app['config']->get('cmb_public_key'),
+            $this->app['config']->get('sign_method', '01'),
+            $this->app['config']->get('bin_path')
+        )) {
             throw new InvalidSignException('Invalid sign.');
         }
     }

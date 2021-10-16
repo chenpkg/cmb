@@ -9,19 +9,27 @@ namespace Cmb\Kernel;
 
 use Chenpkg\Support\Arr;
 use Chenpkg\Support\RSA;
+use Cmb\Support\SM2;
 
 final class Utils
 {
     /**
      * @param $params
      * @param $privateKey
+     * @param string $signMethod
      * @return string
      */
-    public static function sign($params, $privateKey)
+    public static function sign($params, $privateKey, $signMethod = '01', $path = '')
     {
         ksort($params);
 
-        return RSA::sign(urldecode(http_build_query($params)), $privateKey);
+        $params = urldecode(http_build_query($params));
+
+        if ($signMethod == '01') {
+            return RSA::sign($params, $privateKey);
+        }
+
+        return SM2::sign($path, base64_encode($params), $privateKey);
     }
 
     /**
@@ -29,7 +37,7 @@ final class Utils
      * @param $publicKey
      * @return bool
      */
-    public static function verifyPolyPay($params, $publicKey)
+    public static function verifyPolyPay($params, $publicKey, $signMethod = '01', $path = '')
     {
         if (! array_key_exists('sign', $params)) {
             return false;
@@ -40,10 +48,10 @@ final class Utils
         ksort($params);
         $string = urldecode(http_build_query($params));
 
-        if (! RSA::verify($string, $sign, $publicKey)) {
-            return false;
+        if ($signMethod == '01') {
+            return RSA::verify($string, $sign, $publicKey);
         }
 
-        return true;
+        return SM2::verify($path, base64_encode($string), $sign, $publicKey);
     }
 }

@@ -17,7 +17,9 @@ use function Chenpkg\Support\tap;
 
 class BaseClient
 {
-    use HasHttpRequests { request as performRequest; }
+    use HasHttpRequests {
+        request as performRequest;
+    }
 
     use  SetConfig, Macroable;
 
@@ -72,10 +74,10 @@ class BaseClient
 
     /**
      * @param        $url
-     * @param array  $params
+     * @param array $params
      * @param string $method
-     * @param array  $options
-     * @param bool   $returnRaw
+     * @param array $options
+     * @param bool $returnRaw
      * @return array|\Cmb\Kernel\Http\Response|\Chenpkg\Support\Collection|object|string|\Psr\Http\Message\ResponseInterface
      *
      * @throws \Cmb\Kernel\Exceptions\InvalidConfigException
@@ -84,15 +86,15 @@ class BaseClient
     public function request($url, array $params = [], $method = 'post', array $options = [], $returnRaw = false)
     {
         $base = [
-            'version'    => '0.0.1',
-            'encoding'   => 'UTF-8',
-            'signMethod' => '01',
+            'version'     => '0.0.1',
+            'encoding'    => 'UTF-8',
+            'signMethod'  => $this->app['config']->get('sign_method', '01'),
             'biz_content' => ''
         ];
 
         // 业务字段
         $bizContent = [
-            'merId' => $this->app['config']['mer_id'],
+            'merId'  => $this->app['config']['mer_id'],
             'userId' => $this->app['config']['user_id']
         ];
 
@@ -100,12 +102,17 @@ class BaseClient
 
         $params = array_filter(array_merge($bizContent, $this->bizPrepends(), $params), 'strlen');
 
+        // $base['biz_content'] = json_encode($params, JSON_UNESCAPED_SLASHES);
         $base['biz_content'] = json_encode($params);
 
-        $base['sign'] = Utils::sign($base, $this->app['config']['private_key']);
+        $base['sign'] = Utils::sign(
+            $base,
+            $this->app['config']->get('private_key'),
+            $this->app['config']->get('sign_method', '01'),
+            $this->app['config']->get('bin_path')
+        );
 
         $this->headerMiddleware($base['sign']);
-
         $options = array_merge([
             'json' => $base
         ], $options);
@@ -117,9 +124,9 @@ class BaseClient
 
     /**
      * @param        $url
-     * @param array  $params
+     * @param array $params
      * @param string $method
-     * @param array  $options
+     * @param array $options
      * @return mixed
      * @throws \Cmb\Kernel\Exceptions\InvalidConfigException
      * @throws \GuzzleHttp\Exception\GuzzleException
@@ -137,7 +144,12 @@ class BaseClient
      */
     protected function syncVerify(array $params)
     {
-        if (! Utils::verifyPolyPay($params, $this->app['config']['cmb_public_key'])) {
+        if (!Utils::verifyPolyPay(
+            $params,
+            $this->app['config']->get('cmb_public_key'),
+            $this->app['config']->get('sign_method', '01'),
+            $this->app['config']->get('bin_path')
+        )) {
             throw new InvalidSignException('Invalid sign.');
         }
     }

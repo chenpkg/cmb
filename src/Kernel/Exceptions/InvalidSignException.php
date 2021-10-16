@@ -7,8 +7,6 @@
 
 namespace Cmb\Kernel\Exceptions;
 
-use Exception;
-
 class InvalidSignException extends Exception
 {
 }
