@@ -9,7 +9,7 @@ namespace Cmb\Kernel;
 
 use Chenpkg\Support\Arr;
 use Chenpkg\Support\RSA;
-use Cmb\Support\SM2;
+use Cmb\Kernel\Support\SM2;
 
 final class Utils
 {

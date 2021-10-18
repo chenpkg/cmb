@@ -5,7 +5,7 @@
  * Date 2021/10/15 9:43
  */
 
-namespace Cmb\Support;
+namespace Cmb\Kernel\Support;
 
 
 use Cmb\Kernel\Exceptions\RuntimeException;
