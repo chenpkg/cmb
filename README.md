@@ -30,17 +30,17 @@ $config = [
     'mer_id' => 'mer_id',
     // 收银员 ID
     'user_id' => 'user_id',
-    // 商户公钥
-    'public_key' => '...',
     // 商户私钥
     'private_key' => '...',
     // 招行公钥
     'cmb_public_key' => '...',
-
+    // 签名方法，默认使用 01(RSA2)
+    'sign_method' => '01', // 01(RSA2) or 02(SM2)
+    // sm2 签名程序目录，绝对路径，如果签名失败确认文件权限组、权限是否正确
+    'bin_path' => '/www/此处省略.../vendor/chenpkg/cmb/bin',
+    
     // 是否开启测试环境
     'test' => true,
-    // sm2 签名程序目录
-    'bin_path' => '',
 ];
 
 // 扩展 api 接口, 添加宏方法
