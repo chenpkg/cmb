@@ -37,6 +37,7 @@ $config = [
     // 签名方法，默认使用 01(RSA2)
     'sign_method' => '01', // 01(RSA2) or 02(SM2)
     // sm2 签名程序目录，绝对路径，如果签名失败确认文件权限组、权限是否正确
+    // 建议将 ./bin 目录下的 sm2 与 sm2.exe 拷贝出来，因为 composer update 该扩展包时，文件权限组可能会被修改
     'bin_path' => '/www/此处省略.../vendor/chenpkg/cmb/bin',
     
     // 是否开启测试环境
