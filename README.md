@@ -7,7 +7,7 @@
 1. PHP >= 7.2 | PHP >= 8.0
 2. shell_exec 函数
 
-由于 `sm2` 国密算法使用 `go` 实现，所以需要使用 `shell_exec` 调用命令行程序。`go` 源码 <a href="https://github.com/chenpkg/cmbsm2" target="_blank">点击这里</a> 查看
+由于 `sm2` 国密算法使用 `go` 实现，所以需要使用 `shell_exec` 调用命令行程序。`go` 源码 [点击这里](https://github.com/chenpkg/cmbsm2) 查看
 
 ## Installing
 
@@ -117,22 +117,6 @@ $response = $app->handlePaidNotify(function ($message, $fail) {
 
 $response->send(); // Laravel 里请使用：return $response;
 ```
-
-## 常见问题
-
-#### gmsll 安装完成后，执行 gmssl version 报 `gmssl: error while loading shared libraries: libssl.so.1.1: cannot open shared object file: No such file or directory`
-
-解决方法：将 gmssl 目录下的 libssl.so.1.1 libcrypto.so.1.1 做软连接到系统动态库目录下，一般动态库目录是 `/usr/local/lib`,
-软连接完之后，记得执行 `ldconfig` 命令，然后再次执行 `gmssl version` 查看版本。
-
-```shell
-$ ln -s /gmsrc/libssl.so.1.1 /usr/local/lib/libssl.so.1.1
-$ ln -s /gmsrc/libcrypto.so.1.1 /usr/local/lib/libcrypto.so.1.1
-$ ldconfig
-$ gmssl version
-GmSSL 2.5.4 - OpenSSL 1.1.0d  19 Jun 2019
-```
-> 注意上述 gmsrc 路径需换成自己本地 gmssl 的路径。
 
 ## License
 
