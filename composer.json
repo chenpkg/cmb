@@ -17,9 +17,6 @@
         "ext-json": "*",
         "ext-openssl": "*"
     },
-    "bin": [
-        "bin/sm2"
-    ],
     "autoload": {
         "psr-4": {
             "Cmb\\": "src"
