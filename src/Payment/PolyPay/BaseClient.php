@@ -8,8 +8,9 @@
 namespace Cmb\Payment\PolyPay;
 
 use Chenpkg\Support\Traits\Macroable;
+use Cmb\Kernel\Events\BeforeRequest;
 use Cmb\Kernel\Traits\SetConfig;
-use Cmb\Payment\Application;
+use Cmb\Kernel\ServiceContainer;
 use Cmb\Kernel\Exceptions\InvalidSignException;
 use Cmb\Kernel\Utils;
 use Cmb\Kernel\Traits\HasHttpRequests;
@@ -24,7 +25,7 @@ class BaseClient
     use  SetConfig, Macroable;
 
     /**
-     * @var Application
+     * @var ServiceContainer
      */
     protected $app;
 
@@ -35,9 +36,9 @@ class BaseClient
 
     /**
      * BaseClient constructor.
-     * @param Application $app
+     * @param ServiceContainer $app
      */
-    public function __construct(Application $app)
+    public function __construct(ServiceContainer $app)
     {
         $this->app = $app;
 
@@ -102,7 +103,6 @@ class BaseClient
 
         $params = array_filter(array_merge($bizContent, $this->bizPrepends(), $params), 'strlen');
 
-        // $base['biz_content'] = json_encode($params, JSON_UNESCAPED_SLASHES);
         $base['biz_content'] = json_encode($params);
 
         $base['sign'] = Utils::sign(
@@ -112,7 +112,10 @@ class BaseClient
             $this->app['config']->get('bin_path')
         );
 
+        $this->app->events->dispatch(new BeforeRequest($base));
+
         $this->headerMiddleware($base['sign']);
+
         $options = array_merge([
             'json' => $base
         ], $options);

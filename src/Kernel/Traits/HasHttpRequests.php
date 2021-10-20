@@ -7,6 +7,7 @@
 
 namespace Cmb\Kernel\Traits;
 
+use Cmb\Kernel\Events\HttpResponseCreated;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\HandlerStack;
@@ -190,6 +191,8 @@ trait HasHttpRequests
         ], static::$defaults, $options));
 
         $response->getBody()->rewind();
+
+        $this->app->events->dispatch(new HttpResponseCreated($response));
 
         return $response;
     }

@@ -7,10 +7,16 @@
 
 namespace Cmb\Kernel;
 
-use Cmb\Kernel\Providers\RequestServiceProvider;
 use Pimple\Container;
+use Cmb\Kernel\Providers\EventServiceProvider;
+use Cmb\Kernel\Providers\RequestServiceProvider;
 use Cmb\Kernel\Providers\ConfigServiceProvider;
 
+/**
+ * @property \Chenpkg\Support\Repository                        $config
+ * @property \Symfony\Component\HttpFoundation\Request          $request
+ * @property \Symfony\Component\EventDispatcher\EventDispatcher $events
+ */
 class ServiceContainer extends Container
 {
     /**
@@ -52,7 +58,8 @@ class ServiceContainer extends Container
     {
         return array_merge([
             ConfigServiceProvider::class,
-            RequestServiceProvider::class
+            RequestServiceProvider::class,
+            EventServiceProvider::class,
         ], $this->providers);
     }
 
@@ -81,7 +88,7 @@ class ServiceContainer extends Container
      * Magic set access.
      *
      * @param string $id
-     * @param mixed  $value
+     * @param mixed $value
      */
     public function __set($id, $value)
     {

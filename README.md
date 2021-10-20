@@ -42,6 +42,24 @@ $config = [
     
     // 是否开启测试环境
     'test' => true,
+    
+    // 事件监听
+    'events' => [
+        // 将以下 Listener 类换成自己的 Listener 类即可
+        'listen' => [
+            // 请求前事件
+            \Cmb\Kernel\Events\BeforeRequest::class => [
+                // 支持两种监听方式
+                // function ($event) { var_dump($event->base);die; }
+                [new \Cmb\Kernel\Listeners\BeforeRequestListener(), 'handle']
+            ],
+
+            // 请求完成事件
+            \Cmb\Kernel\Events\HttpResponseCreated::class => [
+                [new \Cmb\Kernel\Listeners\HttpResponseCreatedListener(), 'handle']
+            ]
+        ]
+    ]
 ];
 
 // 扩展 api 接口, 添加宏方法
