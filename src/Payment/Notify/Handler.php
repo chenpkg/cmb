@@ -87,7 +87,7 @@ abstract class Handler
         $base = [
             'version'    => '0.0.1',
             'encoding'   => 'UTF-8',
-            'signMethod' => '01',
+            'signMethod' => $this->app['config']->get('sign_method', '01'),
             'returnCode' => $returnCode,
             'respCode'   => $returnCode,
         ];
