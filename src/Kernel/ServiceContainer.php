@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by Cestbon.
  * Author Cestbon <734245503@qq.com>
@@ -61,6 +62,16 @@ class ServiceContainer extends Container
             RequestServiceProvider::class,
             EventServiceProvider::class,
         ], $this->providers);
+    }
+
+    /**
+     * @param string $id
+     * @param mixed  $value
+     */
+    public function rebind($id, $value)
+    {
+        $this->offsetUnset($id);
+        $this->offsetSet($id, $value);
     }
 
     /**
